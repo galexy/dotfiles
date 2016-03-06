@@ -7,16 +7,9 @@ alias dock='docker-machine restart default; eval "$(docker-machine env default)"
 export PATH="~/galex/bin:$PATH"
 export PATH="/usr/local/activator:/usr/local/scala/bin:$PATH"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export GNUTERM=X11
 
 alias jump-prod="ssh galex@jump.remitly.com"
-alias jump-dw="ssh galex@jump-dw.remitly.com"
-
-alias dp="~/aws/datapipeline-cli/datapipeline --credentials ~/aws/creds.json"
-alias tunnel-dw="ssh -L 5439:dw.ca5auwvlxrml.us-west-2.redshift.amazonaws.com:5439 -L 3389:10.1.0.7:3389 galex@jump-dw.remitly.com"
 
 [ -s "/Users/galex/.nvm/nvm.sh" ] && . "/Users/galex/.nvm/nvm.sh" # This loads nvm
 
@@ -27,11 +20,6 @@ OPT_PREFIX="/Users/galex/opt"
 export HADOOP_INSTALL="$OPT_PREFIX/hadoop"
 export PATH="$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin"
 export HADOOP_HOME=$HADOOP_INSTALL
-
-# Setting PATH for Python 3.4
-# The orginal version is saved in .bash_profile.pysave
-#PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
-#export PATH
 
 export ANT_HOME="/opt/apache-ant"
 export PATH=$PATH:$ANT_HOME/bin
