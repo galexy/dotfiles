@@ -1,0 +1,15 @@
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
+alias ls='ls -GFh'
+
+export PATH="~/galex/bin:$PATH"
+
+export GNUTERM=X11
+
+OPT_PREFIX="/Users/galex/opt"
