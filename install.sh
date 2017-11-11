@@ -7,7 +7,7 @@ ln -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
 ln -s ${BASEDIR}/bash/bashrc ~/.bashrc
 
 # spacemacs
-ln -s ${BASEDIR}/emacs/spacemacs ~/.emacs.d/spacemacs
+ln -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
 
 # yarn
 ln -s ${BASEDIR}/yarn/yarnrc ~/.yarnrc
