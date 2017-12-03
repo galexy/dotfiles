@@ -10,6 +10,7 @@ POWERLINE_BASH_SELECT=1
 . /usr/local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 
 alias ls='ls -GFh'
+alias more=less
 
 export PATH="~/opt/bin:~/galex/bin:$PATH"
 
