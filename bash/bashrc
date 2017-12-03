@@ -11,7 +11,7 @@ POWERLINE_BASH_SELECT=1
 
 alias ls='ls -GFh'
 
-export PATH="~/opt/bin:~/galex/bin:$PATH:./node_modules/bin"
+export PATH="~/opt/bin:~/galex/bin:$PATH"
 
 export GNUTERM=X11
 
