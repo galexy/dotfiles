@@ -9,5 +9,3 @@ ln -s ${BASEDIR}/bash/bashrc ~/.bashrc
 # spacemacs
 ln -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
 
-# yarn
-ln -s ${BASEDIR}/yarn/yarnrc ~/.yarnrc
