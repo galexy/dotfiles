@@ -1,3 +1,7 @@
 export PATH="$HOME/.local/bin:$PATH"
 
+if [ -x "$(command -v javac)" ]; then
+  export JAVA_HOME="$(readlink -f `command -v javac` | xargs dirname | xargs dirname)"
+fi
+
 source ~/.bashrc
