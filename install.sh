@@ -9,3 +9,5 @@ ln -s ${BASEDIR}/bash/bashrc ~/.bashrc
 # spacemacs
 ln -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
 
+mkdir -p ~/.config/powerline
+ln -s ${BASEDIR}/powerline/config.json ~/.config/powerline/config.json
