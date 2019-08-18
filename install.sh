@@ -20,3 +20,6 @@ ln -f -s ${BASEDIR}/powerline/config.json ~/.config/powerline/config.json
 echo "LInking git config"
 ln -f -s ${BASEDIR}/git/gitconfig ~/.gitconfig
 
+# tmux
+echo "Linking tmux config"
+ln -f -s ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
