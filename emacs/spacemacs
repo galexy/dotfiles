@@ -349,14 +349,6 @@ you should place your code here."
 
   (org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
-  (require 'tempo)
-
-  (tempo-define-template "my-title"
-                         '("+TITLE: ")
-                         "<T"
-                         "Insert a title"
-                         org-tempo-tags)
-
   (with-eval-after-load 'org
     (org-babel-do-load-languages 'org-babel-load-languages
                                  '((emacs-lisp . t)
