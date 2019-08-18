@@ -106,6 +106,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # some more ls aliases
+alias more='less'
 #alias ll='ls -l -GFh'
 #alias la='ls -A -GFh'
 #alias l='ls -CF'
