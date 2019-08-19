@@ -31,34 +31,29 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     python
-     yaml
-     html
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
      auto-completion
      better-defaults
+     bibtex
+     deft
      emacs-lisp
+     ess
      git
+     haskell
+     helm
+     html
      markdown
      (org :variables
           org-modules '(org-tempo)
           org-enable-org-journal-support t)
+     python
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     scala
      spell-checking
      syntax-checking
      version-control
-     ess
-     haskell
-     scala
-     bibtex
-     deft
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -127,9 +122,8 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (agenda . 5)
-                                (todos . 7))
+   dotspacemacs-startup-lists '((recents . 5))
+
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -331,7 +325,7 @@ you should place your code here."
                                    (lambda (directory)
                                      (directory-files-recursively
                                       directory org-agenda-file-regexp))
-                                   '("~/org/personal/"))))
+                                   '("~/org/personal/" "~/org/kb/"))))
 
     (setq org-journal-dir "~/org/journal")
     (setq org-journal-file-type 'daily)
@@ -341,7 +335,9 @@ you should place your code here."
     (setq org-startup-indented t)
     (setq org-log-into-drawer t)
     (setq org-todo-keywords
-          '((sequence "TODO(t)" "WAIT(w@/!)" "SOMEDAY(s)" "OPEN(o)" "PROJECT(p)" "|" "DONE(d)" "CANCELED(c@)"))))
+          '((sequence "OPEN(o)" "TODO(t)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d)" "CANCELED(c@)")
+            (sequence "PROJECT(p)" "|" "COMPLETED(c)")
+            )))
 
   (use-package org-ref
     :config
