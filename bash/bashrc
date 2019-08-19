@@ -32,12 +32,16 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ -x $(command -v dpkg) ]; then
+if [ ! -z $(command -v dpgk) ] && [ -x $(command -v dpkg) ]; then
     lesspipe_file=$(dpkg -L libsource-highlight-common | grep lesspipe)
     if [ -e $lesspipe_file ]; then
-  export LESSOPEN="| $lesspipe_file %s"
-  export LESS=' -R -F -X '
+      export LESSOPEN="| $lesspipe_file %s"
+      export LESS=' -R -F -X '
     fi
+elif [ ! -z $(command -v brew) ] && [ -f $(brew list source-highlight | grep lesspipe) ]; then
+    lesspipe_file=$(brew list source-highlight | grep lesspipe)
+    export LESSOPEN="| $lesspipe_file %s"
+    export LESS=' -R -X -X '
 else
   export LESS=' -F -X '
 fi
@@ -129,7 +133,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export REPOSITORY=`python3 -m site --user-site`
 if [ -x "$(command -v powerline-daemon)" ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1

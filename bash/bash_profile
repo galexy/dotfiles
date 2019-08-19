@@ -1,6 +1,10 @@
-export PATH="$HOME/.local/bin:$PATH"
+export REPOSITORY=`python3 -m site --user-site`
 
-if [ -x "$(command -v javac)" ]; then
+export PATH="$HOME/.local/bin:${REPOSITORY}/../../../bin:$PATH"
+
+if [ -x "/usr/libexec/java_home" ]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+elif [ -x "$(command -v javac)" ] && [ -x "$(command -v dpkg)" ]; then
   export JAVA_HOME="$(readlink -f `command -v javac` | xargs dirname | xargs dirname)"
 fi
 
