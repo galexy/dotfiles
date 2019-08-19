@@ -25,4 +25,6 @@ ln -f -s ${BASEDIR}/git/gitconfig ~/.gitconfig
 echo "Linking tmux config"
 ln -f -s ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
 
-
+# local bin
+echo "Linking local bin files"
+ln -f -s ${BASEDIR}/bin/* ~/.local/bin
