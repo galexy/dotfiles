@@ -335,9 +335,20 @@ you should place your code here."
     (setq org-startup-indented t)
     (setq org-log-into-drawer t)
     (setq org-todo-keywords
-          '((sequence "OPEN(o)" "TODO(t)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d)" "CANCELED(c@)")
-            (sequence "PROJECT(p)" "|" "COMPLETED(c)")
+          '((sequence "OPEN(o)" "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "MAYBE(m)" "|" "DONE(d!)" "CANCELED(c@/!)")
+            (sequence "PROJECT(p)" "RUNNING(r!)" "|" "COMPLETED(c!)")
+            ))
+
+    (setq org-agenda-todo-ignore-with-date t)
+
+    (setq org-agenda-custom-commands
+          '(("m" "Main View"
+             ((agenda "")
+              (todo "PROJECT|RUNNING")
+              (todo "WAITING")
+              (todo "TODO|STARTED"))
             )))
+    )
 
   (use-package org-ref
     :config
