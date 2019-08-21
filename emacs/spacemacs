@@ -323,12 +323,7 @@ you should place your code here."
     (setq deft-directory "~/org/kb")
     (setq deft-extensions '("org", "md"))
 
-    (setq org-agenda-files (apply 'append
-                                  (mapcar
-                                   (lambda (directory)
-                                     (directory-files-recursively
-                                      directory org-agenda-file-regexp))
-                                   '("~/org/personal/"))))
+    (setq org-agenda-files '("~/org/personal/" "~/org/kb/00-reading-list.org"))
 
     (setq org-agenda-todo-ignore-with-date t)
 
