@@ -296,6 +296,8 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'all
+   ;; Toggle variable font size in org agenda view
+   spacemacs-theme-org-agenda-height nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -325,7 +327,17 @@ you should place your code here."
                                    (lambda (directory)
                                      (directory-files-recursively
                                       directory org-agenda-file-regexp))
-                                   '("~/org/personal/" "~/org/kb/"))))
+                                   '("~/org/personal/"))))
+
+    (setq org-agenda-todo-ignore-with-date t)
+
+    (setq org-agenda-custom-commands
+          '(("m" "Main View"
+             ((agenda )
+              (todo "PROJECT|RUNNING")
+              (todo "WAITING")
+              (todo "TODO|STARTED"))
+             )))
 
     (setq org-journal-dir "~/org/journal")
     (setq org-journal-file-type 'daily)
@@ -339,15 +351,6 @@ you should place your code here."
             (sequence "PROJECT(p)" "RUNNING(r!)" "|" "COMPLETED(c!)")
             ))
 
-    (setq org-agenda-todo-ignore-with-date t)
-
-    (setq org-agenda-custom-commands
-          '(("m" "Main View"
-             ((agenda "")
-              (todo "PROJECT|RUNNING")
-              (todo "WAITING")
-              (todo "TODO|STARTED"))
-            )))
     )
 
   (use-package org-ref
@@ -368,22 +371,7 @@ you should place your code here."
                                    (ditaa . t)
                                    ))
     )
+
+  (setq custom-file "~/.emacs.d/.cache/.custom-settings")
+  (load custom-file)
   )
-
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (lv transient deft org-journal org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-mime pyenv-mode company-anaconda anaconda-mode yapfify pyvenv pytest py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode pythonic yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data unfill smeargle origami orgit mwim mmm-mode markdown-toc markdown-mode magit-gitflow intero hlint-refactor hindent helm-hoogle helm-gitignore helm-company helm-c-yasnippet haskell-snippets gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flycheck-pos-tip pos-tip flycheck-haskell flycheck evil-magit magit magit-popup git-commit with-editor ess-smart-equals ess-R-data-view ctable ess julia-mode diff-hl company-statistics company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode auto-yasnippet ac-ispell auto-complete noflet ensime company yasnippet sbt-mode scala-mode flyspell-correct-helm flyspell-correct auto-dictionary org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
