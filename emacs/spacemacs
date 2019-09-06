@@ -330,10 +330,12 @@ you should place your code here."
     (setq org-agenda-custom-commands
           '(("m" "Main View"
              ((agenda )
-              (todo "PROJECT|RUNNING")
+              (todo "STARTED")
+              (todo "RUNNING")
               (todo "WAITING")
-              (todo "TODO|STARTED"))
-             )))
+              (todo "PROJECT")
+              (todo "TODO")
+             ))))
 
     (setq org-journal-dir "~/org/journal")
     (setq org-journal-file-type 'daily)
