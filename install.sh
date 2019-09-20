@@ -28,3 +28,8 @@ ln -f -s ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
 # local bin
 echo "Linking local bin files"
 ln -f -s ${BASEDIR}/bin/* ~/.local/bin
+
+# ghci
+echo "Linking GHCi configuration"
+mkdir -p ~/.ghc/
+ln -f -s ${BASEDIR}/ghc/ghci.conf ~/.ghc/ghci.conf
