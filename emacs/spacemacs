@@ -51,8 +51,10 @@ values."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      scala
+     scheme
      spell-checking
      syntax-checking
+     themes-megapack
      version-control
      yaml
      )
@@ -132,14 +134,13 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -299,6 +300,8 @@ values."
    dotspacemacs-whitespace-cleanup 'all
    ;; Toggle variable font size in org agenda view
    spacemacs-theme-org-agenda-height nil
+   ;; Toggle comment background color
+   spacemacs-theme-comment-bg nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -335,7 +338,7 @@ you should place your code here."
               (todo "WAITING")
               (todo "PROJECT")
               (todo "TODO")
-             ))))
+              ))))
 
     (setq org-journal-dir "~/org/journal")
     (setq org-journal-file-type 'daily)
@@ -350,6 +353,10 @@ you should place your code here."
             ))
 
     )
+
+  (setq haskell-process-type 'stack-ghci
+        haskell-process-path-ghci "stack"
+   )
 
   (use-package org-ref
     :config
@@ -367,6 +374,7 @@ you should place your code here."
                                    (latex . t)
                                    (haskell . t)
                                    (ditaa . t)
+                                   (scheme . t)
                                    ))
     )
 
