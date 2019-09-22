@@ -16,6 +16,7 @@ ln -f -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
 echo "Linking powerline config"
 mkdir -p ~/.config/powerline
 ln -f -s ${BASEDIR}/powerline/config.json ~/.config/powerline/config.json
+ln -f -s ${BASEDIR}/powerline/themes ~/.config/powerline/themes
 
 # git
 echo "LInking git config"
