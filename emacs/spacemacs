@@ -31,38 +31,64 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     javascript
+     ;; checkers
+     spell-checking
+     syntax-checking
+
+     ;; completion
      auto-completion
-     better-defaults
-     bibtex
-     deft
-     emacs-lisp
-     ess
-     git
-     haskell
      helm
-     html
-     markdown
+
+     ;; emacs
+     better-defaults
      (org :variables
           org-modules '(org-tempo)
           org-enable-org-journal-support t)
+
+     ;; programming and markup
+     bibtex
+     c-c++
+     emacs-lisp
+     ess
+     haskell
+     html
+     idris
+     javascript
+     markdown
      python
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     rust
      scala
      scheme
-     spell-checking
-     syntax-checking
-     themes-megapack
-     version-control
+     sql
+     swift
+     typescript
      yaml
+
+     ;; source control
+     git
+     version-control
+
+     ;; themes
+     themes-megapack
+     theming
+
+     ;; tools
+     deft
+     docker
+     nginx
+     restclient
+
+     ;; custom
+     galexy
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(org-journal)
+   dotspacemacs-additional-packages '(
+                                      org-journal
+                                      ov
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -134,13 +160,13 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark)
+   dotspacemacs-themes '(spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 18
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -266,7 +292,13 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers '(:relative nil
+                               :disabled-for-modes dired-mode
+                                                   doc-view-mode
+                                                   markdown-mode
+                                                   org-mode
+                                                   text-mode
+                               :size-limit-kb 1000)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -311,6 +343,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -345,18 +378,22 @@ you should place your code here."
     (setq org-journal-file-format "%Y-%m-%d.org")
     (setq org-journal-date-format "%A, %m/%d/%Y")
 
-    (setq org-startup-indented t)
     (setq org-log-into-drawer t)
     (setq org-todo-keywords
           '((sequence "OPEN(o)" "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "MAYBE(m)" "|" "DONE(d!)" "CANCELED(c@/!)")
             (sequence "PROJECT(p)" "RUNNING(r!)" "|" "COMPLETED(c!)")
             ))
 
+    (setq org-startup-indented t
+          ;; org-bullets-bullet-list '(" ") ;; no bullets
+          ;; org-ellipsis "  " ;; folding symbol
+          org-pretty-entities t
+          org-hide-emphasis-markers t ;; show actually italicized text instead of /italicized text/
+          org-agenda-block-separator ""
+          org-fontify-whole-heading-line t
+          org-fontify-done-headline t
+          org-fontify-quote-and-verse-blocks t)
     )
-
-  (setq haskell-process-type 'stack-ghci
-        haskell-process-path-ghci "stack"
-   )
 
   (use-package org-ref
     :config
@@ -364,6 +401,10 @@ you should place your code here."
     (setq org-ref-default-bibliography '("~/org/kb/readings/research.bib")
           org-ref-pdf-directory "~/Google Drive/My Drive/papers/")
     )
+
+  (setq haskell-process-type 'stack-ghci
+        haskell-process-path-ghci "stack"
+   )
 
   (org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
@@ -380,4 +421,17 @@ you should place your code here."
 
   (setq custom-file "~/.emacs.d/.cache/.custom-settings")
   (load custom-file)
+
+  (add-hook 'org-mode-hook
+            (lambda () (progn
+                         (setq left-margin-width 2)
+                         (setq right-margin-width 2)
+                         (set-window-buffer nil (current-buffer))
+                         (setq line-spacing 0.1))))
+
+  (add-hook 'org-mode-hook 'hidden-mode-line-mode)
+
+  (add-hook 'org-mode-hook 'variable-pitch-mode)
+
+  (plist-put org-format-latex-options :scale 2)
   )
