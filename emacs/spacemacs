@@ -428,6 +428,11 @@ you should place your code here."
   (add-hook 'org-mode-hook 'hidden-mode-line-mode)
   (add-hook 'org-mode-hook 'variable-pitch-mode)
 
+  ;; Make frames with transparent title bars in mac
+  ;; See https://github.com/freetonik/castlemacs/issues/2
+  (when (memq window-system '(mac ns))
+    (add-to-list 'default-frame-alist '(ns-appearance . light)) ;; {light, dark}
+    (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
   ;; Scale the preview images of latex math in org mode
   ;; See https://tex.stackexchange.com/questions/78501/change-size-of-the-inline-image-for-latex-fragment-in-emacs-org-mode
