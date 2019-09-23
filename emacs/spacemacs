@@ -419,19 +419,21 @@ you should place your code here."
                                    ))
     )
 
-  (setq custom-file "~/.emacs.d/.cache/.custom-settings")
-  (load custom-file)
-
+  ;; Hooks to customer org mode based on rogue settings
+  ;; See https://lepisma.xyz/2017/10/28/ricing-org-mode/
   (add-hook 'org-mode-hook
             (lambda () (progn
                          (setq left-margin-width 2)
                          (setq right-margin-width 2)
                          (set-window-buffer nil (current-buffer))
                          (setq line-spacing 0.1))))
-
   (add-hook 'org-mode-hook 'hidden-mode-line-mode)
-
   (add-hook 'org-mode-hook 'variable-pitch-mode)
 
+
+  ;; Scale the preview images of latex math in org mode
+  ;; See https://tex.stackexchange.com/questions/78501/change-size-of-the-inline-image-for-latex-fragment-in-emacs-org-mode
   (plist-put org-format-latex-options :scale 2)
-  )
+
+  (setq custom-file "~/.emacs.d/.cache/.custom-settings")
+  (load custom-file))
