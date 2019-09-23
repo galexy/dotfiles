@@ -392,15 +392,13 @@ you should place your code here."
           org-agenda-block-separator ""
           org-fontify-whole-heading-line t
           org-fontify-done-headline t
-          org-fontify-quote-and-verse-blocks t)
-    )
+          org-fontify-quote-and-verse-blocks t))
 
   (use-package org-ref
     :config
-
-    (setq org-ref-default-bibliography '("~/org/kb/readings/research.bib")
-          org-ref-pdf-directory "~/Google Drive/My Drive/papers/")
-    )
+    (setq org-ref-default-bibliography
+          '("~/org/kb/readings/research.bib")
+          org-ref-pdf-directory "~/Google Drive/My Drive/papers/"))
 
   (setq haskell-process-type 'stack-ghci
         haskell-process-path-ghci "stack"
