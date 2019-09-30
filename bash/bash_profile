@@ -9,3 +9,7 @@ elif [ -x "$(command -v javac)" ] && [ -x "$(command -v dpkg)" ]; then
 fi
 
 source ~/.bashrc
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/galex/.sdkman"
+[[ -s "/Users/galex/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/galex/.sdkman/bin/sdkman-init.sh"
