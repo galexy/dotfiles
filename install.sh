@@ -11,6 +11,8 @@ ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
 # spacemacs
 echo "Linking spacemacs config"
 ln -f -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
+echo "Linking custom private layer"
+ln -f -s ${BASEDIR}/emacs/galexy ~/.emacs.d/private/galexy
 
 # powerline
 echo "Linking powerline config"
@@ -34,3 +36,7 @@ ln -f -s ${BASEDIR}/bin/* ~/.local/bin
 echo "Linking GHCi configuration"
 mkdir -p ~/.ghc/
 ln -f -s ${BASEDIR}/ghc/ghci.conf ~/.ghc/ghci.conf
+
+# readline
+echo "Linking readline inputrc"
+ln -f -s ${BASEDIR}/readline/inputrc ~/.inputrc
