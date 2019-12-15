@@ -359,7 +359,12 @@ you should place your code here."
     (setq deft-directory "~/org/kb")
     (setq deft-extensions '("org", "md"))
 
-    (setq org-agenda-files '("~/org/personal/" "~/org/kb/00-reading-list.org"))
+    (load-library "find-lisp")
+
+    (setq org-agenda-files
+          (append (find-lisp-find-files "~/org/apple" "\.org$")
+                  (find-lisp-find-files "~/org/personal" "\.org$")
+                  '("~/org/reading/00-reading-list.org")))
 
     (setq org-agenda-todo-ignore-with-date t)
 
@@ -389,7 +394,10 @@ you should place your code here."
           ;; org-ellipsis "  " ;; folding symbol
           org-pretty-entities t
           org-hide-emphasis-markers t ;; show actually italicized text instead of /italicized text/
-          org-agenda-block-separator ""
+          org-agenda-window-setup 'current-window
+          org-agenda-timegrid-use-ampm t
+          org-agenda-start-with-log-mode t
+          ;;org-agenda-block-separator ""
           org-fontify-whole-heading-line t
           org-fontify-done-headline t
           org-fontify-quote-and-verse-blocks t))
@@ -436,22 +444,23 @@ you should place your code here."
 
   ;; Scale the preview images of latex math in org mode
   ;; See https://tex.stackexchange.com/questions/78501/change-size-of-the-inline-image-for-latex-fragment-in-emacs-org-mode
-  (plist-put org-format-latex-options :scale 2)
+  (plist-put org-format-latex-options :scale 1.5)
+
+  (plist-put org-format-latex-options :foreground "Black")
+
+  (plist-put org-format-latex-options :latex-fragment-pre-body "\\mathversion{bold}\n")
+
+  (defun org-inject-latex-fragment (orig-func &rest args)
+    "Advice function to inject latex code before and/or after the equation in a latex fragment.
+You can use this to set \\mathversion{bold} for example to make it bolder."
+    (setf (car args)
+          (concat
+           (or (plist-get org-format-latex-options :latex-fragment-pre-body) "")
+           (car args)
+           (or (plist-get org-format-latex-options :latex-fragment-post-body) "")))
+    (apply orig-func args))
+
+  (advice-add 'org-create-formula-image :around #'org-inject-latex-fragment )
 
   (setq custom-file "~/.emacs.d/.cache/.custom-settings")
   (load custom-file))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (doom-themes pdf-tools helm-bibtex anaconda-mode ess highlight request org-plus-contrib helm dash tide typescript-mode swift-mode sql-indent ob-http idris-mode prop-menu docker docker-tramp company-restclient know-your-http-well clang-format cargo spacemeacs-dark-theme zenburn-theme zen-and-art-theme yapfify yaml-mode ws-butler winum white-sand-theme which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el paradox orgit organic-green-theme org-ref org-projectile org-present org-pomodoro org-mime org-journal org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noflet noctilux-theme neotree naquadah-theme mwim mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum livid-mode live-py-mode linum-relative link-hint light-soap-theme json-mode js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme intero inkpot-theme indent-guide hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser gandalf-theme fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exotica-theme exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ess-smart-equals ess-R-data-view espresso-theme ensime emmet-mode elisp-slime-nav dumb-jump dracula-theme django-theme diminish diff-hl deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme company-web company-tern company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode cmm-mode clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
