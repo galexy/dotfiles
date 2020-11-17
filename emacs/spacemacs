@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     go
      ;; checkers
      spell-checking
      syntax-checking
@@ -69,7 +70,7 @@ values."
      version-control
 
      ;; themes
-     themes-megapack
+     ;; themes-megapack
      theming
 
      ;; tools
@@ -160,13 +161,13 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-one spacemacs-light)
+   ;; dotspacemacs-themes '(doom-one spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 17
+                               :size 20.0
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -370,11 +371,12 @@ you should place your code here."
 
     (setq org-agenda-custom-commands
           '(("m" "Main View"
-             ((agenda )
+             ((agenda "" ((org-agenda-span 1)))
               (todo "STARTED")
               (todo "RUNNING")
               (todo "WAITING")
               (todo "PROJECT")
+              (todo "DECIDE")
               (todo "TODO")
               ))))
 
@@ -387,6 +389,7 @@ you should place your code here."
     (setq org-todo-keywords
           '((sequence "OPEN(o)" "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "MAYBE(m)" "|" "DONE(d!)" "CANCELED(c@/!)")
             (sequence "PROJECT(p)" "RUNNING(r!)" "|" "COMPLETED(c!)")
+            (sequence "DECIDE(d)" "JOURNAL (j!)" "|" "DONE(d!)")
             ))
 
     (setq org-startup-indented t
