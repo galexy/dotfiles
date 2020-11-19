@@ -8,6 +8,9 @@ ln -f -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
 ln -f -s ${BASEDIR}/bash/bashrc ~/.bashrc
 ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
 
+echo "Linking zsh config"
+ln -f -s ${BASEDIR}/zsh/zshrc ~/.zshrc
+
 # spacemacs
 echo "Linking spacemacs config"
 ln -f -s ${BASEDIR}/emacs/spacemacs ~/.spacemacs
