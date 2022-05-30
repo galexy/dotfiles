@@ -3,13 +3,16 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # bash
-echo "Linking bash config"
-ln -f -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
-ln -f -s ${BASEDIR}/bash/bashrc ~/.bashrc
-ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
+#echo "Linking bash config"
+# ln -f -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
+# ln -f -s ${BASEDIR}/bash/bashrc ~/.bashrc
+# ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
 
 echo "Linking zsh config"
+mkdir -p ~/.zsh
+ln -f -s ${BASEDIR}/zsh/completion ~/.zsh/completion
 ln -f -s ${BASEDIR}/zsh/zshrc ~/.zshrc
+ln -f -s ${BASEIDR}/zsh/zshenv ~/.zshenv
 
 # spacemacs
 echo "Linking spacemacs config"
@@ -24,7 +27,7 @@ ln -f -s ${BASEDIR}/powerline/config.json ~/.config/powerline/config.json
 ln -f -s ${BASEDIR}/powerline/themes ~/.config/powerline/themes
 
 # git
-echo "LInking git config"
+echo "Linking git config"
 ln -f -s ${BASEDIR}/git/gitconfig ~/.gitconfig
 
 # tmux
@@ -43,3 +46,10 @@ ln -f -s ${BASEDIR}/ghc/ghci.conf ~/.ghc/ghci.conf
 # readline
 echo "Linking readline inputrc"
 ln -f -s ${BASEDIR}/readline/inputrc ~/.inputrc
+
+echo "Linking Cargo configuration"
+mkdir -p ~/.cargo
+ln -f -s ${BASEDIR}/cargo/env ~/.cargo/env
+
+echo "Linking Guile Configuration"
+ln -f -s ${BASEDIR}/guile/guile ~/.guile
