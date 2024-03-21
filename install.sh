@@ -61,3 +61,7 @@ ln -f -s ${BASEDIR}/aws/config ~/.aws/config
 echo "Linking Cabal Configuration"
 mkdir -p ~/.cabal
 ln -f -s ${BASEDIR}/cabal/config ~/.cabal/config
+
+echo "Linking 1Password SSH Configuration"
+mkdir -p ~/.config/1Password/ssh
+ln -f -s ${BASEDIR}/1Password/ssh/agent.toml ~/.config/1Password/ssh/agent.toml
