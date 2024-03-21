@@ -1,0 +1,18 @@
+[profile galex]
+region=us-west-2
+cli_pager=
+output=text
+
+[profile galex-yardhub]
+region=us-west-2
+cli_pager=
+output=text
+
+[profile localhost]
+
+[profile lunar-dev]
+region = us-west-2
+output = json
+
+[profile hpb]
+region = us-west-2

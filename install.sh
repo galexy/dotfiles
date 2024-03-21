@@ -53,3 +53,7 @@ ln -f -s ${BASEDIR}/cargo/env ~/.cargo/env
 
 echo "Linking Guile Configuration"
 ln -f -s ${BASEDIR}/guile/guile ~/.guile
+
+echo "Linking AWS CLI Configuration"
+mkdir -p ~/.aws
+ln -f -s ${BASEDIR}/aws/config ~/.aws/config
