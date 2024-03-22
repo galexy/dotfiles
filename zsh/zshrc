@@ -15,6 +15,7 @@ autoload -Uz compinit ; compinit
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+SOLARIZED_THEME="dark"
 ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
@@ -52,7 +53,7 @@ ZSH_THEME="agnoster"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -69,6 +70,8 @@ ZSH_THEME="agnoster"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244,bg=6,bold"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -115,20 +118,19 @@ export LANG=en_US.UTF-8
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ ! -z $(command -v dpgk) ] && [ -x $(command -v dpkg) ]; then
+if [ ! -z $(command -v dpkg) ] && [ -x $(command -v dpkg) ]; then
     lesspipe_file=$(dpkg -L libsource-highlight-common | grep lesspipe)
-    if [ -e $lesspipe_file ]; then
+    if [ ! -z $(command -v source-highlight) ] && [ -x $(command -v source-highlight) ] && [ -e $lesspipe_file ]; then
         export LESSOPEN="| $lesspipe_file %s"
-        export LESS=' -R -F -X '
-	export MORE=' -R -F -X '
     fi
-elif [ ! -z $(command -v brew) ] && [ -f $(brew list source-highlight | grep lesspipe) ]; then
+    export LESS=' -R -F -X '
+elif [ -f $(brew list source-highlight | grep lesspipe) ]; then
     lesspipe_file=$(brew list source-highlight | grep lesspipe)
     export LESSOPEN="| $lesspipe_file %s"
     export LESS=' -R -F -X '
     export MORE=' -R -F -X '
 else
-    export LESS=' -F -X '
+    export LESS=' -R -F -X '
 fi
 
 # colored GCC warnings and errors
