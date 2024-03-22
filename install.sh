@@ -3,16 +3,18 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # bash
-#echo "Linking bash config"
-# ln -f -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
-# ln -f -s ${BASEDIR}/bash/bashrc ~/.bashrc
-# ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
+echo "Linking bash config"
+ln -f -s ${BASEDIR}/bash/bash_profile ~/.bash_profile
+ln -f -s ${BASEDIR}/bash/bashrc ~/.bashrc
+ln -f -s ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
+ln -f -s ${BASEDIR}/bash/profile ~/.profile
 
 echo "Linking zsh config"
 mkdir -p ~/.zsh
 ln -f -s ${BASEDIR}/zsh/completion ~/.zsh/completion
 ln -f -s ${BASEDIR}/zsh/zshrc ~/.zshrc
 ln -f -s ${BASEIDR}/zsh/zshenv ~/.zshenv
+ln -f -s ${BASEDIR}/zsh/zprofile ~/.zprofile
 
 # spacemacs
 echo "Linking spacemacs config"
@@ -65,3 +67,4 @@ ln -f -s ${BASEDIR}/cabal/config ~/.cabal/config
 echo "Linking 1Password SSH Configuration"
 mkdir -p ~/.config/1Password/ssh
 ln -f -s ${BASEDIR}/1Password/ssh/agent.toml ~/.config/1Password/ssh/agent.toml
+

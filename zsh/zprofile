@@ -1,0 +1,10 @@
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Added by Toolbox App
+export PATH="$PATH:/Users/galex/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# >>> JVM installed by coursier >>>
+export JAVA_HOME="/Users/galex/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.7%252B7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.7_7.tar.gz/jdk-17.0.7+7/Contents/Home"
+# <<< JVM installed by coursier <<<
