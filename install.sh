@@ -13,7 +13,7 @@ echo "Linking zsh config"
 mkdir -p ~/.zsh
 ln -f -s ${BASEDIR}/zsh/completion ~/.zsh/completion
 ln -f -s ${BASEDIR}/zsh/zshrc ~/.zshrc
-ln -f -s ${BASEIDR}/zsh/zshenv ~/.zshenv
+ln -f -s ${BASEDIR}/zsh/zshenv ~/.zshenv
 ln -f -s ${BASEDIR}/zsh/zprofile ~/.zprofile
 
 # spacemacs
