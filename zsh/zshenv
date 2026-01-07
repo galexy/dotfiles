@@ -1,2 +1,6 @@
+export PATH=$HOME/.dotnet/:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
+
+export PATH="$PATH:/usr/local/smlnj/bin:/Users/galex/Library/Application Support/Coursier/bin"
+
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
