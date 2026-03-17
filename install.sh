@@ -59,6 +59,8 @@ LINKS=(
     "1password|1Password/ssh/agent.toml|~/.config/1Password/ssh/agent.toml"
     # helix (already XDG)
     "helix|helix/config.toml|~/.config/helix/config.toml"
+    # wezterm (already XDG)
+    "wezterm|wezterm/wezterm.lua|~/.config/wezterm/wezterm.lua"
 )
 
 # --- Helpers ---

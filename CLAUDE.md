@@ -16,7 +16,7 @@ Personal dotfiles repository for macOS. Configuration files are stored in per-to
 ./install.sh <config>
 ```
 
-Valid config names: `bash`, `zsh`, `spacemacs`, `powerline`, `git`, `tmux`, `bin`, `ghci`, `readline`, `cargo`, `guile`, `aws`, `cabal`, `1password`
+Valid config names: `bash`, `zsh`, `spacemacs`, `powerline`, `git`, `tmux`, `bin`, `ghci`, `readline`, `cargo`, `guile`, `aws`, `cabal`, `1password`, `wezterm`
 
 The script creates symlinks from the repo files into `~/` (or `~/.config/`, `~/.aws/`, etc.). It uses `ln -f -s`, so re-running overwrites existing links.
 
@@ -28,6 +28,7 @@ Each subdirectory maps to a tool and contains its raw config files (no build ste
 - **tmux/** — `tmux.conf` uses Nord theme via TPM, has `allow-passthrough` and `extended-keys` enabled for Claude Code compatibility.
 - **emacs/** — Spacemacs config with emacs editing style and a custom `galexy` private layer. Heavy org-mode setup with journal, agenda, and LaTeX rendering.
 - **git/** — Minimal gitconfig (user info + LFS).
+- **wezterm/** — WezTerm terminal config. Uses MesloLGS Nerd Font, Nord color scheme, integrated title bar buttons, and background blur.
 - **1Password/ssh/** — SSH agent config enabling keys from "Lunar" and "Personal" vaults.
 
 ## Key Details
