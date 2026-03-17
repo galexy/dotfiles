@@ -187,7 +187,7 @@ cmd_doctor() {
             current="$(readlink "$target")"
             if [[ "$current" == "$src" ]]; then
                 log_ok "$target_raw → $src_rel"
-                ((ok++))
+                ((++ok))
             elif [[ ! -e "$target" ]]; then
                 if [[ "$FIX" == true ]]; then
                     local msg="$target_raw — remove broken link, relink to $src_rel"
@@ -199,10 +199,10 @@ cmd_doctor() {
                         ln -s "$src" "$target"
                         log_ok "$msg"
                     fi
-                    ((fixed++))
+                    ((++fixed))
                 else
                     log_error "$target_raw → $current (broken symlink)"
-                    ((err++))
+                    ((++err))
                 fi
             else
                 if [[ "$FIX" == true ]]; then
@@ -214,10 +214,10 @@ cmd_doctor() {
                         ln -s "$src" "$target"
                         log_ok "$msg"
                     fi
-                    ((fixed++))
+                    ((++fixed))
                 else
                     log_warn "$target_raw → $current (expected $src_rel)"
-                    ((warn++))
+                    ((++warn))
                 fi
             fi
         elif [[ -e "$target" ]]; then
@@ -232,10 +232,10 @@ cmd_doctor() {
                     ln -s "$src" "$target"
                     log_ok "$msg"
                 fi
-                ((fixed++))
+                ((++fixed))
             else
                 log_error "$target_raw exists as a real file (not managed)"
-                ((err++))
+                ((++err))
             fi
         else
             if [[ "$FIX" == true ]]; then
@@ -247,10 +247,10 @@ cmd_doctor() {
                     ln -s "$src" "$target"
                     log_ok "$msg"
                 fi
-                ((fixed++))
+                ((++fixed))
             else
                 log_warn "$target_raw is not installed"
-                ((warn++))
+                ((++warn))
             fi
         fi
 
@@ -275,10 +275,10 @@ cmd_doctor() {
                         fi
                         log_ok "$msg"
                     fi
-                    ((fixed++))
+                    ((++fixed))
                 else
                     log_warn "$legacy_raw still exists — should be at $target_raw instead"
-                    ((warn++))
+                    ((++warn))
                 fi
             fi
         fi
