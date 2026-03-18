@@ -7,3 +7,15 @@ output=text
 
 [profile hpb]
 region = us-west-2
+
+[profile sageox]
+sso_session = sageox
+sso_account_id = 681881315844
+sso_role_name = AWSPowerUserAccess
+region = us-west-2
+output = table
+
+[sso-session sageox]
+sso_start_url = https://d-9267ec5427.awsapps.com/start/#
+sso_region = us-west-2
+sso_registration_scopes = sso:account:access
