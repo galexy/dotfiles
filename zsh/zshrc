@@ -91,6 +91,7 @@ plugins=(
     colored-man-pages
     command-not-found
     fzf
+    mise
     uv
     zsh-autosuggestions
     zsh-history-substring-search
